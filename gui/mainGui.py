@@ -1,5 +1,6 @@
 from PIL import Image
 import customtkinter
+from selectionFrame import selectOutput
 
 customtkinter.set_appearance_mode("System")
 customtkinter.set_default_color_theme("green")
@@ -18,6 +19,8 @@ class App(customtkinter.CTk):
         self.logoLabel = customtkinter.CTkLabel(master=self,image=self.logoImage,text="")
         self.logoLabel.pack()
 
+        self.test = selectOutput(self)
+        self.test.pack()
 
 if __name__ == "__main__":
     app = App()
