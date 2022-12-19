@@ -1,3 +1,4 @@
+from PIL import Image
 import customtkinter
 
 customtkinter.set_appearance_mode("System")
@@ -8,17 +9,15 @@ class App(customtkinter.CTk):
         super().__init__()
 
         self.title("minimal example app")
-        self.minsize(400, 300)
+        self.minsize(400,300)
 
-        # self.button = customtkinter.CTkButton(master=self, command=self.button_callback)
-        # self.button.pack(padx=20, pady=20)
+        self.logoImage = customtkinter.CTkImage(light_image=Image.open("images/AutoAccountantLogo1.png"), 
+        dark_image=Image.open("images/AutoAccountantLogo1.png"), 
+        size=(380,80))
+        
+        self.logoLabel = customtkinter.CTkLabel(master=self,image=self.logoImage,text="")
+        self.logoLabel.pack()
 
-        self.mainTextBox = customtkinter.CTkTextbox(master=self,width=self.winfo_width(),height=self.winfo_height()//4)
-        self.mainTextBox.insert("0.0", "Hello World")
-        self.mainTextBox.pack(pady = 20)
-
-    def button_callback(self):
-        print("button pressed")
 
 if __name__ == "__main__":
     app = App()
