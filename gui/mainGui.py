@@ -10,7 +10,9 @@ class App(customtkinter.CTk):
         super().__init__()
 
         self.title("minimal example app")
+        self.geometry(f"{400}x{500}")
         self.minsize(400,500)
+        self.maxsize(400,500)
 
         self.logoImage = customtkinter.CTkImage(light_image=Image.open("images/AutoAccountantLogo1.png"), 
         dark_image=Image.open("images/AutoAccountantLogo1.png"), 
