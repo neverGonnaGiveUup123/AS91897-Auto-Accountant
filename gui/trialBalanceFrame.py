@@ -1,7 +1,7 @@
 import customtkinter
 from tkinter import WORD
 
-class selectOutput(customtkinter.CTkFrame):
+class selectTrialBalance(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -22,12 +22,12 @@ class selectOutput(customtkinter.CTkFrame):
             weight="bold"
             ),
         )
-        self.testTextBox.insert("0.0", "What file would you like Auto Accountant to complete?")
+        self.testTextBox.insert("0.0", "Select trial balance file. If it's a photo, make sure it is clear.")
         self.testTextBox.configure(state="disabled")
         self.testTextBox.tag_config(tagName="tag_name",justify="center")
         self.testTextBox.pack(padx=20, pady=10)
 
-        combobox_var = customtkinter.StringVar(value="Balance Sheet")
+        combobox_var = customtkinter.StringVar(value="File explorer stuff will go here")
 
         def combobox_callback(choice):
             print("combobox dropdown clicked:", choice)
@@ -41,4 +41,3 @@ class selectOutput(customtkinter.CTkFrame):
             state="readonly",
             text_color="black")
         combobox.pack(pady=10)
-

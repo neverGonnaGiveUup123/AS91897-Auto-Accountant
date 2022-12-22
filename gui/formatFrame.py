@@ -1,7 +1,7 @@
 import customtkinter
 from tkinter import WORD
 
-class selectOutput(customtkinter.CTkFrame):
+class selectFormat(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -22,23 +22,22 @@ class selectOutput(customtkinter.CTkFrame):
             weight="bold"
             ),
         )
-        self.testTextBox.insert("0.0", "What file would you like Auto Accountant to complete?")
+        self.testTextBox.insert("0.0", "What format would you like this file in?")
         self.testTextBox.configure(state="disabled")
         self.testTextBox.tag_config(tagName="tag_name",justify="center")
         self.testTextBox.pack(padx=20, pady=10)
 
-        combobox_var = customtkinter.StringVar(value="Balance Sheet")
+        combobox_var = customtkinter.StringVar(value="PDF")
 
         def combobox_callback(choice):
             print("combobox dropdown clicked:", choice)
 
         combobox = customtkinter.CTkComboBox(
             master=self,
-            values=["Balance sheet", "Financial statement"],
+            values=["PDF", "XLSX", "CSV"],
             command=combobox_callback,
             variable=combobox_var,
             width=150,
             state="readonly",
             text_color="black")
         combobox.pack(pady=10)
-
