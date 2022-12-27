@@ -1,5 +1,6 @@
 import customtkinter
-from tkinter import WORD
+import tkinter
+from tkinter import WORD, ttk
 
 class selectFormat(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
@@ -27,17 +28,15 @@ class selectFormat(customtkinter.CTkFrame):
         self.testTextBox.tag_config(tagName="tag_name",justify="center")
         self.testTextBox.pack(padx=20, pady=10)
 
-        combobox_var = customtkinter.StringVar(value="PDF")
+        combobox_var = tkinter.StringVar()
 
-        def combobox_callback(choice):
-            print("combobox dropdown clicked:", choice)
-
-        combobox = customtkinter.CTkComboBox(
+        combobox = ttk.Combobox(
             master=self,
             values=["PDF", "XLSX", "CSV"],
-            command=combobox_callback,
-            variable=combobox_var,
-            width=150,
-            state="readonly",
-            text_color="black")
+            textvariable=combobox_var,
+            state='readonly',
+            
+        )
+
+        combobox.bind("<<ComboboxSelected>>",lambda e: self.testTextBox.focus())
         combobox.pack(pady=10)
