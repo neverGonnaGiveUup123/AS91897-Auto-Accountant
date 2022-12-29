@@ -28,15 +28,16 @@ class selectTrialBalance(customtkinter.CTkFrame):
         self.testTextBox.tag_config(tagName="tag_name",justify="center")
         self.testTextBox.pack(padx=20, pady=10)
 
-        combobox_var = tkinter.StringVar()
+        def file_select():
+            # filetypes = (("image file", "*.png"),("All files", "*.*"))
 
-        combobox = ttk.Combobox(
+            customtkinter.filedialog.askopenfile(filetypes=[("Jpg Files", "*.jpg")], mode='r')
+        
+        self.filedialogButton = customtkinter.CTkButton(
             master=self,
-            values=["Will change this in the future", " "],
-            textvariable=combobox_var,
-            state='readonly',
-            
+            command=file_select,
+            height=24,
+            text="Open file"
         )
 
-        combobox.bind("<<ComboboxSelected>>",lambda e: self.testTextBox.focus())
-        combobox.pack(pady=10)
+        self.filedialogButton.pack(pady=10)

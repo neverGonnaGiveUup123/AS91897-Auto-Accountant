@@ -1,5 +1,6 @@
 from PIL import Image
 import customtkinter
+import tkinter.font
 
 from selectionFrame import selectOutput
 from formatFrame import selectFormat
@@ -12,7 +13,7 @@ class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("minimal example app")
+        self.title("AS91897")
         self.geometry(f"{400}x{500}")
         self.minsize(400,500)
         self.maxsize(400,500)
@@ -33,8 +34,8 @@ class App(customtkinter.CTk):
         self.trialBalance = selectTrialBalance(self)
         self.trialBalance.pack()
 
-        self.submitButton = customtkinter.CTkButton(self,width=100,height=24,fg_color="#345eeb",text="Submit", hover_color="#340eeb")
-        self.submitButton.pack(pady=8)
+        self.submitButton = customtkinter.CTkButton(self,width=200,text="Submit",font=customtkinter.CTkFont(size=18))
+        self.submitButton.pack(pady=10)
 
 if __name__ == "__main__":
     app = App()
