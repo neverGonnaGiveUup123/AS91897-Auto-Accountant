@@ -1,6 +1,5 @@
 from PIL import Image
 import customtkinter
-import tkinter.font
 
 from selectionFrame import selectOutput
 from formatFrame import selectFormat
