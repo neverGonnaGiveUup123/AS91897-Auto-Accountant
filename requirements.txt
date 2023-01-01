@@ -1,0 +1,2 @@
+customtkinter==5.0.3
+pytesseract==0.3.10
