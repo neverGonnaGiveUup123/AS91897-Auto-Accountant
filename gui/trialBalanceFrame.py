@@ -30,9 +30,13 @@ class selectTrialBalance(customtkinter.CTkFrame):
 
         def file_select():
             # filetypes = (("image file", "*.png"),("All files", "*.*"))
+            print("Success")
+            print(self.selectedFile)
+            # return customtkinter.filedialog.askopenfile(filetypes=[("Jpg Files", "*.jpg")], mode='r')
+            self.selectedFile = customtkinter.filedialog.askopenfile(filetypes=[("Jpg Files", "*.jpg")], mode='r')
+            print(self.selectedFile)
+            
 
-            customtkinter.filedialog.askopenfile(filetypes=[("Jpg Files", "*.jpg")], mode='r')
-        
         self.filedialogButton = customtkinter.CTkButton(
             master=self,
             command=file_select,
@@ -40,4 +44,7 @@ class selectTrialBalance(customtkinter.CTkFrame):
             text="Open file"
         )
 
+        self.selectedFile = None
+
         self.filedialogButton.pack(pady=10)
+

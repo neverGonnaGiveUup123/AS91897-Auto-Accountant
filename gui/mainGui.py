@@ -24,8 +24,8 @@ class App(customtkinter.CTk):
         self.logoLabel = customtkinter.CTkLabel(master=self,image=self.logoImage,text="")
         self.logoLabel.pack()
 
-        self.test = selectOutput(self)
-        self.test.pack()
+        self.output = selectOutput(self)
+        self.output.pack()
 
         self.format = selectFormat(self)
         self.format.pack()
@@ -33,7 +33,18 @@ class App(customtkinter.CTk):
         self.trialBalance = selectTrialBalance(self)
         self.trialBalance.pack()
 
-        self.submitButton = customtkinter.CTkButton(self,width=200,text="Submit",font=customtkinter.CTkFont(size=18))
+        def testfunc():
+            print("Success")
+
+            e = selectTrialBalance(self).selectedFile
+            print(e)
+
+        self.submitButton = customtkinter.CTkButton(self,
+        width=200,
+        text="Submit",
+        font=customtkinter.CTkFont(size=18),
+        command=testfunc)
+
         self.submitButton.pack(pady=10)
 
 if __name__ == "__main__":
