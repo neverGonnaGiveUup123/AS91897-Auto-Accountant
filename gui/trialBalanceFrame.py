@@ -1,6 +1,5 @@
 import customtkinter
-import tkinter
-from tkinter import WORD, ttk
+from tkinter import WORD
 
 class selectTrialBalance(customtkinter.CTkFrame):
     def __init__(self, *args, **kwargs):
@@ -29,13 +28,8 @@ class selectTrialBalance(customtkinter.CTkFrame):
         self.testTextBox.pack(padx=20, pady=10)
 
         def file_select():
-            # filetypes = (("image file", "*.png"),("All files", "*.*"))
-            print("Success")
-            print(self.selectedFile)
-            # return customtkinter.filedialog.askopenfile(filetypes=[("Jpg Files", "*.jpg")], mode='r')
-            self.selectedFile = customtkinter.filedialog.askopenfile(filetypes=[("Jpg Files", "*.jpg")], mode='r')
-            print(self.selectedFile)
-            
+            with open("file_communication/SelectedFile.txt", "w") as file:
+                file.write(str(customtkinter.filedialog.askopenfile(filetypes=[("Jpg Files", "*.jpg")], mode='r')))
 
         self.filedialogButton = customtkinter.CTkButton(
             master=self,
@@ -43,8 +37,4 @@ class selectTrialBalance(customtkinter.CTkFrame):
             height=24,
             text="Open file"
         )
-
-        self.selectedFile = None
-
         self.filedialogButton.pack(pady=10)
-

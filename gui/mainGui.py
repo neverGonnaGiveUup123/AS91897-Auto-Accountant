@@ -33,17 +33,17 @@ class App(customtkinter.CTk):
         self.trialBalance = selectTrialBalance(self)
         self.trialBalance.pack()
 
-        def testfunc():
-            print("Success")
-
-            e = selectTrialBalance(self).selectedFile
-            print(e)
+        def get_selected_file():
+            with open('file_communication/SelectedFile.txt', "r") as file:
+                text = file.read()
+                splitText = text.split("'")
+                print(splitText[1])
 
         self.submitButton = customtkinter.CTkButton(self,
         width=200,
         text="Submit",
         font=customtkinter.CTkFont(size=18),
-        command=testfunc)
+        command=get_selected_file)
 
         self.submitButton.pack(pady=10)
 

@@ -1,0 +1,1 @@
+<_io.TextIOWrapper name='C:/Users/sidsa/OneDrive/Pictures/Saved Pictures/marvel.jpg' mode='r' encoding='cp1252'>
