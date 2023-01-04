@@ -20,18 +20,22 @@ currentAssets = {
     'Inventory on hand' : 0,
 }
 
-def get_num(dictReference):
-    newValue = splitText[splitText.index(i) + 1].replace(',', '')
-    currentAssets[str(dictReference)] = int(newValue)
+def get_num(dictReference, specifyJump):
+    newValue = splitText[splitText.index(i) + specifyJump].replace(',', '')
+    currentAssets[str(dictReference)] = int(newValue.replace('$', ''))
 
 def check_trial_balance():
     for j in currentAssets.keys():
         if re.search(j, i) != None:
-            get_num(j)
+            get_num(j,1)
 
 for i in splitText:
     check_trial_balance()
-    if re.search("^CA.*Accounts$", i) != None:
-        testList = ''.join(splitText[splitText.index(i):splitText.index(i) + 2])
-print(testList)
+    if re.search('Receivable', i) != None:
+        get_num("Accounts Receivable",1)
+    if re.search('Income', i) != None:
+        get_num("Accrued Income",1)
+    if re.search("hand", i) != None:
+        get_num("Inventory on hand",5)
+    
 print(currentAssets)
