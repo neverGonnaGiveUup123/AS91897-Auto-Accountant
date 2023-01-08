@@ -51,14 +51,11 @@ print(currentAssets)
 CAdf = pd.DataFrame.from_dict(currentAssets, orient='index')
 print(CAdf)
 
+
 try:
     os.remove(f"{os.getcwd()}/output_file/output.csv")
 except FileNotFoundError:
-    with open('output_file/output.csv', 'a', encoding='utf-8') as file:
-        file.write("Current Assets")
-        file.write(f"{str(CAdf)}\n")
+    CAdf.to_csv('output_file/output.csv')
 
 if os.path.exists(f"{os.getcwd()}/output_file/output.csv") == False:
-    with open('output_file/output.csv', 'a', encoding='utf-8') as file:
-        file.write("Current Assets")
-        file.write(f"{str(CAdf)}\n")
+    CAdf.to_csv('output_file/output.csv')
