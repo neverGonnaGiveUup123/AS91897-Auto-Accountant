@@ -1,1 +1,1 @@
-<_io.TextIOWrapper name='C:/Users/sidsa/OneDrive/Pictures/Saved Pictures/vine-black-painted-swatch.jpg' mode='r' encoding='cp1252'>
+<_io.TextIOWrapper name='C:/Users/sidsa/OneDrive/Documents/VSC-stuff/python_projects/AutoAccountant/images/test.jpg' mode='r' encoding='cp1252'>

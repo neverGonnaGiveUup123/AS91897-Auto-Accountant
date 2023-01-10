@@ -1,16 +1,10 @@
-import pytesseract
 import re
 import pandas as pd
 import os
-from PIL import Image
+from readTrialBalance import readTrialBalance
 
-pytesseract.pytesseract.tesseract_cmd = 'C:\Program Files\Tesseract-OCR/tesseract.exe'
-
-imgText = pytesseract.image_to_string(Image.open("images/test.jpg"))
-
-print(imgText)
-
-splitText = imgText.split()
+trialBalance = readTrialBalance('images/test.jpg')
+splitText = trialBalance.splitStringTrialBalance()
 
 print(splitText)
 
@@ -50,7 +44,6 @@ print(currentAssets)
 
 CAdf = pd.DataFrame.from_dict(currentAssets, orient='index')
 print(CAdf)
-
 
 try:
     os.remove(f"{os.getcwd()}/output_file/output.csv")
