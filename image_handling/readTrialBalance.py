@@ -10,6 +10,3 @@ class readTrialBalance:
     def splitStringTrialBalance(self) -> list:
         trialBalance = pytesseract.image_to_string(Image.open(self.image))
         return trialBalance.split()
-
-t = readTrialBalance('images/test.jpg')
-print(t.splitStringTrialBalance())
