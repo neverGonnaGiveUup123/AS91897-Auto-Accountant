@@ -43,6 +43,7 @@ for i in splitText:
 print(currentAssets)
 
 CAdf = pd.DataFrame.from_dict(currentAssets, orient='index', columns=['Current Assets'])
+CAdf.index.name = "Test"
 print(CAdf)
 
 try:
