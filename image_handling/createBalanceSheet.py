@@ -3,26 +3,30 @@ import pandas as pd
 import os
 from readTrialBalance import readTrialBalance
 
-# trialBalance = readTrialBalance('images/test.jpg')
-# splitText = trialBalance.splitStringTrialBalance()
+trialBalance = readTrialBalance('images/test.jpg')
+trialBalanceList = trialBalance.splitStringTrialBalance()
 
-# print(splitText)
+
 
 class createBalanceSheet:
-    def __init__(self,trialBalance,splitText) -> None:
-        self.trialBalance = trialBalance
+    def __init__(self,splitText) -> None:
         self.splitText = splitText
     
-    def set_dict_values(self) -> None:
+    def set_dict_values(self, reference: dict) -> None:
         for items in self.splitText:
-            pass
-    
-    def find_values():
-        key_words = []
-        jumps = []
-        for i in zip(key_words,jumps):
-            pass
+            returned_value = self.find_values(items, self.splitText)
+            if returned_value != None:
+                for i in reference.keys():
+                    if re.search(returned_value[1], i) != None:
+                        reference[i] = returned_value[0]
 
+    def find_values(self, items: str, text_list: list):
+        key_words = ['Bank', 'Receivable', 'Prepayments', 'Income', 'hand']
+        jumps = [1, 1, 1, 1, 5]
+        for k, j in zip(key_words,jumps):
+            if re.search(k, items) != None:
+                selected_val = text_list[text_list.index(items) + j].replace(',', '')
+                return selected_val.replace('$', ''), k
 
 currentAssets = {
     'Bank' : 0,
@@ -32,30 +36,13 @@ currentAssets = {
     'Inventory on hand' : 0,
 }
 
+foo = createBalanceSheet(trialBalanceList)
+createBalanceSheet.set_dict_values(foo, currentAssets)
+
 investments = {
     'shares' : 0,
 }
 
-# def get_num(dictReference, dictKey, specifyJump):
-#     newValue = splitText[splitText.index(i) + specifyJump].replace(',', '')
-#     dictReference[str(dictKey)] = int(newValue.replace('$', ''))
-
-# def check_trial_balance():
-#     for j in currentAssets.keys():
-#         if re.search(j, i) != None:
-#             get_num(currentAssets, j, 1)
-#     if re.search('Receivable', i) != None:
-#         get_num(currentAssets, "Accounts Receivable",1)
-#     if re.search('Income', i) != None:
-#         get_num(currentAssets, "Accrued Income",1)
-#     if re.search("hand", i) != None:
-#         get_num(currentAssets, "Inventory on hand",5)
-#     if re.search("Shares", i) != None:
-#         get_num(investments, "Shares", 3)
-
-# for i in splitText:
-#     check_trial_balance()
-    
 print(currentAssets)
 
 CAdf = pd.DataFrame.from_dict(currentAssets, orient='index')
