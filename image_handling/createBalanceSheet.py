@@ -1,26 +1,23 @@
 import re
 import pandas as pd
 import os
-from readTrialBalance import readTrialBalance
-
-trialBalance = readTrialBalance('images/test.jpg')
-trialBalanceList = trialBalance.splitStringTrialBalance()
 
 
 
 class createBalanceSheet:
-    def __init__(self,splitText) -> None:
-        self.splitText = splitText
+    from image_handling.readTrialBalance import readTrialBalance
+    trialBalance = readTrialBalance('images/test.jpg')
+    trialBalanceList = trialBalance.splitStringTrialBalance()
     
     def set_dict_values(self, reference: dict) -> None:
-        for items in self.splitText:
-            returned_value = self.find_values(items, self.splitText)
+        for items in self.trialBalanceList:
+            returned_value = self.find_values(self, items, self.trialBalanceList)
             if returned_value != None:
                 for i in reference.keys():
                     if re.search(returned_value[1], i) != None:
                         reference[i] = returned_value[0]
 
-    def find_values(self, items: str, text_list: list):
+    def find_values(self, items: str, text_list: list) -> int:
         key_words = ['Bank', 'Receivable', 'Prepayments', 'Income', 'hand']
         jumps = [1, 1, 1, 1, 5]
         for k, j in zip(key_words,jumps):
@@ -36,8 +33,7 @@ currentAssets = {
     'Inventory on hand' : 0,
 }
 
-foo = createBalanceSheet(trialBalanceList)
-createBalanceSheet.set_dict_values(foo, currentAssets)
+createBalanceSheet.set_dict_values(self=createBalanceSheet,reference=currentAssets)
 
 investments = {
     'shares' : 0,
