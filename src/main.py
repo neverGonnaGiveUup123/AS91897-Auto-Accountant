@@ -1,0 +1,7 @@
+from image_handling.createBalanceSheet import createBalanceSheet
+
+print(createBalanceSheet.return_trial_balance_list(createBalanceSheet))
+createBalanceSheet.set_dict_values(createBalanceSheet)
+
+balance_sheet = createBalanceSheet.return_balance_sheet(createBalanceSheet)
+createBalanceSheet.create_csv(createBalanceSheet,balance_sheet)

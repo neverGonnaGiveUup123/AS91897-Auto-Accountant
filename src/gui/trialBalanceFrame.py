@@ -28,7 +28,7 @@ class selectTrialBalance(customtkinter.CTkFrame):
         self.testTextBox.pack(padx=20, pady=10)
 
         def file_select():
-            with open("file_communication/SelectedFile.txt", "w") as file:
+            with open("src/file_communication/SelectedFile.txt", "w") as file:
                 file.write(str(customtkinter.filedialog.askopenfile(filetypes=[("Jpg Files", "*.jpg")], mode='r')))
 
         self.filedialogButton = customtkinter.CTkButton(

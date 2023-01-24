@@ -1,3 +1,0 @@
-from image_handling.createBalanceSheet import createBalanceSheet, currentAssets
-
-createBalanceSheet.set_dict_values(self=createBalanceSheet,reference=currentAssets)

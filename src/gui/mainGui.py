@@ -17,8 +17,8 @@ class App(customtkinter.CTk):
         self.minsize(400,500)
         self.maxsize(400,500)
 
-        self.logoImage = customtkinter.CTkImage(light_image=Image.open("images/AutoAccountantLogo1.png"), 
-        dark_image=Image.open("images/AutoAccountantLogo1.png"), 
+        self.logoImage = customtkinter.CTkImage(light_image=Image.open("src/images/AutoAccountantLogo1.png"), 
+        dark_image=Image.open("src/images/AutoAccountantLogo1.png"), 
         size=(380,80))
         
         self.logoLabel = customtkinter.CTkLabel(master=self,image=self.logoImage,text="")
@@ -34,7 +34,7 @@ class App(customtkinter.CTk):
         self.trialBalance.pack()
 
         def get_selected_file():
-            with open('file_communication/SelectedFile.txt', "r") as file:
+            with open('src/file_communication/SelectedFile.txt', "r") as file:
                 text = file.read()
                 splitText = text.split("'")
                 print(splitText[1])
