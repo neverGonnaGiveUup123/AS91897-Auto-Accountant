@@ -28,15 +28,20 @@ class selectFormat(customtkinter.CTkFrame):
         self.testTextBox.tag_config(tagName="tag_name",justify="center")
         self.testTextBox.pack(padx=20, pady=10)
 
-        combobox_var = tkinter.StringVar()
+        self.combobox_var = tkinter.StringVar()
 
-        combobox = ttk.Combobox(
+        self.combobox = ttk.Combobox(
             master=self,
             values=["PDF", "XLSX", "CSV"],
-            textvariable=combobox_var,
+            textvariable=self.combobox_var,
             state='readonly',
             
         )
 
-        combobox.bind("<<ComboboxSelected>>",lambda e: self.testTextBox.focus())
-        combobox.pack(pady=10)
+        self.combobox.bind("<<ComboboxSelected>>",lambda e: self.testTextBox.focus())
+        self.combobox.pack(pady=10)
+
+    def return_combobox(self):
+        return self.combobox_var
+
+selectFormat(customtkinter.CTk()).return_combobox()

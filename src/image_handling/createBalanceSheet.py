@@ -12,11 +12,12 @@ class createBalanceSheet:
     
     def set_dict_values(self) -> None:
         for items in self.trialBalanceList:
-            returned_value = self.find_values(self, items, self.trialBalanceList)
+            returned_value = self.find_values(items, self.trialBalanceList)
             if returned_value != None:
+                print(returned_value)
                 for i in self.balance_sheet_dict.keys():
                     if re.search(returned_value[1], i) != None:
-                        self.balance_sheet_dict[i] = returned_value[0]
+                        self.balance_sheet_dict[i][1] = returned_value[0]
 
     def find_values(self, items: str, text_list: list) -> int:
         key_words = ['Bank', 'Receivable', 'Prepayments', 'Income', 'hand', 'Shares']
@@ -37,7 +38,7 @@ class createBalanceSheet:
         try:
             os.remove(f"{os.getcwd()}/src/output_file/output.csv")
         except FileNotFoundError:
-            df.to_csv('src/output_file/output.csv')
+            df.to_csv('src/output_file/output.csv', header=False)
 
         if os.path.exists(f"{os.getcwd()}/src/output_file/output.csv") == False:
-            df.to_csv('src/output_file/output.csv')
+            df.to_csv('src/output_file/output.csv', header=False)

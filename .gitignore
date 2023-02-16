@@ -1,1 +1,2 @@
-file_communication/
+*__pycache__/
+test.py
