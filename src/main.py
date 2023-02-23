@@ -1,12 +1,12 @@
 from image_handling.createBalanceSheet import createBalanceSheet
 
 def main():
-    print(createBalanceSheet().return_trial_balance_list())
-    createBalanceSheet().set_dict_values(createBalanceSheet.nca_key_words)
+    createBalanceSheet().set_dict_values(createBalanceSheet.ca_key_words)
 
     balance_sheet = createBalanceSheet().return_balance_sheet()
     print(balance_sheet)
     createBalanceSheet().create_csv(balance_sheet)
+    # createBalanceSheet().test()
 
 if __name__ == '__main__':
     main()
