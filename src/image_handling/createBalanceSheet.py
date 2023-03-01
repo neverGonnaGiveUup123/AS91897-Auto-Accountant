@@ -5,12 +5,12 @@ import json
 
 
 class createBalanceSheet:
-    with open(f"{os.getcwd()}/src/data/balance_sheet_data.json", "r") as file:
+    with open(f"{os.getcwd()}/src/data/test_json.json", "r") as file:
         balance_sheet_dict = json.load(file)
     from image_handling.readTrialBalance import readTrialBalance
-
-    trialBalance = readTrialBalance("src/images/test.jpg")
-    trialBalanceList = trialBalance.splitStringTrialBalance()
+    trial_balance = readTrialBalance()
+    trial_balance.set_image('src/images/test.jpg')
+    trialBalanceList = trial_balance.splitStringTrialBalance()
     ca_key_words = [
         ["Bank", 1, 0, 0],
         ["Receivable", 1, 0, 1],
@@ -75,9 +75,8 @@ class createBalanceSheet:
         print(self.ca_key_words)
 
     def test(self):
-        self.determine_column(self.ca_key_words, self.trialBalanceList)
         for a,b,c,d in self.ca_key_words:
-            print(c)
+            print(type(a))
 
     def return_trial_balance_list(self) -> list:
         return self.trialBalanceList
